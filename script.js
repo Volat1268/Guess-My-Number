@@ -9,8 +9,13 @@ document.querySelector(".number").textContent = "??";
 document.querySelector(".guess").value = 14;
 console.log(document.querySelector(".guess").value);
 */
+const secretNumber = Math.trunc(Math.random() * 20);
+
 document.querySelector(".check").addEventListener("click", function () {
-	const guess = document.querySelector(".guess").value;
-	console.log(guess);		
+	const guess = Number(document.querySelector(".guess").value);
+	console.log(guess, typeof guess);	
+	if (!guess) {
+		document.querySelector(".message").textContent = "⚠ No number!"
+	}
 });
 
