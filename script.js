@@ -1,30 +1,18 @@
 'use strict';
-/*
-console.log(document.querySelector(".message").textContent);
 
-document.querySelector('.message').textContent = "🐷 Correct number!";
-
-document.querySelector(".score").textContent = "50";
-document.querySelector(".number").textContent = "??";
-document.querySelector(".guess").value = 14;
-console.log(document.querySelector(".guess").value);
-*/
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // document.querySelector(".number").textContent = secretNumber;
-console.log(`secret number: ${secretNumber}`);
-
-
+console.log(`secret number: ${secretNumber}`); //FIXME: убрать из конечного кода (показывает в консоли выбранное число)
 
 let score = 20;
-document.querySelector(".score").textContent = score;
+document.querySelector('.score').textContent = score;
 
 let highscore = 0;
 document.querySelector('.highscore').textContent = highscore;
 
-document.querySelector(".check").addEventListener(
-	"click", function () {
+document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  
+
   // ---- when there is no Number
   if (!guess) {
     document.querySelector('.message').textContent = '⚠ No number!';
@@ -32,15 +20,13 @@ document.querySelector(".check").addEventListener(
     // ---- when guess == secretNumber
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number!';
-		document.querySelector(".number").textContent = secretNumber;
-		// change background color and width of number
-		document.querySelector('body').style.backgroundColor = '#60b347';
-		document.querySelector(".number").style.width = "30rem";
-		document.querySelector(".number").textContent = secretNumber;
-    // if (score > highscore) {
-    // 	highscore = score;
-    // 	document.querySelector(".highscore").textContent = highscore;
-    // }
+    document.querySelector('.number').textContent = secretNumber;
+    // change background color and width of number
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secretNumber;
+		if (score > highscore) highscore = score;
+    document.querySelector('.highscore').textContent = highscore;
 
     // ---- when guess > secretNumber
   } else if (guess > secretNumber) {
@@ -64,21 +50,18 @@ document.querySelector(".check").addEventListener(
       document.querySelector('.score').textContent = score;
     }
   }
-}
-);
+});
 
 // ----- function for btn again
-document.querySelector(".again").addEventListener(
-	"click",
-	function () {
-		secretNumber = Math.trunc(Math.random() * 20) + 1;
-		console.log(`secret number: ${secretNumber}`);
-		score = 20;
-		document.querySelector(".score").textContent = score;
-		document.querySelector(".message").textContent = "Start guessing...";
-		document.querySelector(".number").textContent = "?"
-		document.querySelector("body").style.backgroundColor = "#222";
-		document.querySelector(".number").style.width = "15rem";
-		document.querySelector(".guess").value = ""
-	}
-);
+document.querySelector('.again').addEventListener('click', function () {
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  console.log(`secret number: ${secretNumber}`); // FIXME: убрать из конечного кода (показывает в консоли выбранное число)
+  
+  score = 20;
+  document.querySelector('.score').textContent = 20;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.guess').value = '';
+});
